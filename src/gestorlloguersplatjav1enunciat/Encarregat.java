@@ -17,8 +17,10 @@ public class Encarregat {
      Accions:
      - Assignar als atributs els valors passats com a paràmetres
      */
-    public Encarregat() {
-       
+    public Encarregat( String pDni, String pNom, String pAdreca) {
+       dni = pDni;
+       nom = pNom;
+       adreca = pAdreca;
     }
 
     /*
