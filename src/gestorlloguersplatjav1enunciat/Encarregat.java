@@ -17,17 +17,37 @@ public class Encarregat {
      Accions:
      - Assignar als atributs els valors passats com a paràmetres
      */
-    public Encarregat( String pDni, String pNom, String pAdreca) {
-       dni = pDni;
-       nom = pNom;
-       adreca = pAdreca;
+    public Encarregat( String nouDni, String nouNom, String nouAdreca) {
+       dni = nouDni;
+       nom = nouNom;
+       adreca = nouAdreca;
     }
 
     /*
      Mètodes accessors    
      */
+    //metode accesor de DNI
+    public String getDni(){
+    return dni;
+    }
+    public void setDni(String nouDni) {
+        dni = nouDni;
+    }
+    //metode accesor de Nom
+    public String getNom(){
+    return nom;
+    }
+    public void setNom(String nouNom) {
+        dni = nouNom;
+    }
+    //metode accesor de adreça
+    public String getAdreca(){
+    return nom;
+    }
+    public void setAdeca(String nouAdreca) {
+        dni = nouAdreca;
+    }
     
-
     /*
      Paràmetres: cap
      Accions:
@@ -38,7 +58,20 @@ public class Encarregat {
      Retorn: El nou encarregat de zona creat.
      */
     public static Encarregat nouEncarregat() {
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Introduce el DNI del nuevo encargado: ");
+        String nouDni = in.nextLine();
+        
+        System.out.println("Introduce el nombre del nuevo encargado: ");
+        String nouNom = in.nextLine();
+         
+        System.out.println("Introduce la direccion del nuevo encargado: ");
+        String nouAdreca = in.nextLine();
        
+        Encarregat nouEncarregat = new Encarregat(nouDni,nouNom,nouAdreca);
+        
+        return nouEncarregat ;
     }
 
     /*
