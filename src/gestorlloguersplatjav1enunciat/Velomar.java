@@ -11,6 +11,7 @@ public class Velomar {
     private String dataAlta;
     private boolean tobogan;
     private boolean llogat;
+    
 
     /*
      CONSTRUCTOR
@@ -19,17 +20,54 @@ public class Velomar {
      - Assignar als atributs els valors passats com a paràmetres
      - A codi li hem d'assignar el següent enter que serà incrementant el valor
        actual de codi en 1.
-     - Heu de tenir en compte que quan es crea una ombrella, l'atribut llogat 
+     - Heu de tenir en compte que quan es crea una velomar, l'atribut llogat 
        sempre és fals.
      */
-    public Velomar() {
-
+    public Velomar(String nouDataAlta, boolean nouTobogan) {
+        codi++;
+        dataAlta = nouDataAlta;
+        tobogan = nouTobogan;
+        llogat = false;
+        
     }
 
     /*
      Mètodes accessors. No poden ser estàtics. Penseu com serà setCodi().    
      */
-   
+    /*
+        inicialmente el atributo estatico valdra 0 pero cuando el usuario 
+        introduce un codigo para el velomar este metodo lo que hara será que lo 
+        que haya introducido el usuario se lo añadirá al atributo "codi".
+    
+    */
+    public void setCodi(int nouCodi){
+        codi = nouCodi;
+    }
+    //metodo para añadir la fecha de alta a un velomar
+    public void setDataAlta(String nouDataAlta){
+        dataAlta = nouDataAlta;
+    }
+    
+    //metodo para indicar si se quiere un tobogan o no al alquilar un velomar
+    public void setTobogan(boolean nouTobogan){
+        tobogan = nouTobogan;
+    }
+    
+    public void setLlogat(boolean nouLlogat){
+        llogat = nouLlogat;
+    }
+    
+    public int getCodi(){
+        return codi;
+    }
+    
+    public String getDataAlta(){
+        return dataAlta;
+    }
+    
+    public boolean getTobogan(){
+        return tobogan;
+    }
 
     /*
      Paràmetres: cap
@@ -43,7 +81,14 @@ public class Velomar {
      Retorn: El nou velomar creat.
      */
     public static Velomar nouVelomar() {
-       
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce un código numérico: ");
+        int codi = in.nextInt();
+        
+        System.out.println("Introduce una fecha de alta: ");
+        String dataAlta = in.nextLine();
+        
+       System.out.println("Introduce si quieres que este alquilado o no");
     }
 
     /*
