@@ -7,7 +7,8 @@ import java.util.Scanner;
  */
 public class Ombrella {
 
-    private static int codi = 0;
+    private int codi;
+    private static int properCodi=0;
     private String dataAlta;
     private Hamaca[] hamaques;
     private boolean llogat;
