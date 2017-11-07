@@ -84,7 +84,17 @@ public class Encarregat {
      Retorn: cap
      */
     public void modificarEncarregat() {
+        Scanner in = new Scanner(System.in);
         
+        
+        System.out.println("El DNI actual es "+dni+", para modificarlo escribelo a continuació: ");
+         this.dni = in.nextLine();
+        
+        System.out.println("El Nombre actual es "+nom+", para modificarlo escribelo a continuació: ");
+        this.nom = in.nextLine();
+         
+        System.out.println("El Nombre actual es "+adreca+", para modificarlo escribelo a continuació: ");
+        this.adreca = in.nextLine();
     }
 
     public void mostrarEncarregat() {
