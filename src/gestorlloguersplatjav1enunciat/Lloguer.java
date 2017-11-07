@@ -8,8 +8,9 @@ import java.util.Scanner;
  */
 public class Lloguer {
 
-    private static final double VALOR = 8.0;
-    private static int codi;
+     private static final double VALOR = 8.0;
+    private int codi;
+    private static int properCodi=0;
     private String codiZona;
     private String dniEncarregat;
     private int idElementLloguer;
