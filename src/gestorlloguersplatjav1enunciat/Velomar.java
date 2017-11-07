@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Velomar {
 
     private int codi;
-    private static int properCodi=0;
+    private static int properCodi = 0;
     private String dataAlta;
     private boolean tobogan;
     private boolean llogat;
@@ -26,6 +26,7 @@ public class Velomar {
      */
     public Velomar(String nouDataAlta, boolean nouTobogan) {
         codi++;
+        properCodi = codi + 1;
         dataAlta = nouDataAlta;
         tobogan = nouTobogan;
         llogat = false;
@@ -75,6 +76,7 @@ public class Velomar {
      Accions:
      - Demanar a l'usuari les dades per consola per crear un nou velomar. Les dades
        a demanar són les que passem per paràmetre en el constructor.
+    
      - Quan demaneu si té tobogan o no, li heu de demanar a l'usuari que introdueixi
        1 si té i 0 si no té. En cas de no introduir cap dels dos valors se li 
        mostrarà un missatge avisant-lo de què el valor introduït no és correcte i
@@ -83,13 +85,45 @@ public class Velomar {
      */
     public static Velomar nouVelomar() {
         Scanner in = new Scanner(System.in);
+        
         System.out.println("Introduce un código numérico: ");
         int codi = in.nextInt();
         
         System.out.println("Introduce una fecha de alta: ");
         String dataAlta = in.nextLine();
         
-       System.out.println("Introduce si quieres que este alquilado o no");
+        System.out.println("Introduce si quieres un tobogan o no "
+               + "(1 -> quieres tobogan, 0 -> no quieres tobogan)");
+        boolean tobogan = in.nextBoolean();
+        /*
+            Bucle que volvera a pedir al usuario un valor nuevo en caso de haber
+            introducido algo distinto a 0 i/o 1
+        */
+        do{
+            System.out.println("El valor introducido no es correcto.");
+            System.out.println("Vuelve a introducir un valor (0 o 1)");
+            
+        }while((String.valueOf(tobogan) == "") || (String.valueOf(tobogan) != "0") || (String.valueOf(tobogan) != "1"));
+        
+        
+        System.out.println("Introduce si quieres alquilar un Velomar o no"
+                + "(1 -> quieres alquilar, 0 -> no quieres alquilar)");
+        
+        boolean llogat = in.nextBoolean();
+        /*
+            Bucle que volvera a pedir al usuario un valor nuevo en caso de haber
+            introducido algo distinto a 0 i/o 1
+        */
+        do{
+            System.out.println("El valor introducido no es correcto.");
+            System.out.println("Vuelve a introducir un valor (0 o 1)");
+            
+        }while((String.valueOf(llogat) == "") || (String.valueOf(llogat) != "0") || (String.valueOf(llogat) != "1"));
+        
+        //Creacion de un velomar
+        Velomar nouVelomar = new Velomar(dataAlta, llogat);
+        //devuelve el nuevo velomar
+        return nouVelomar;
     }
 
     /*
@@ -99,18 +133,45 @@ public class Velomar {
        i modificar els atributs corresponents d'aquest objecte.
      - Li heu de mostrar a l'usuari el valor actual dels atributs de l'objecte
        actual, abans de modificar-los.
+    
      - Per mostrar si té tobogan o no, li heu de mostrar a l'usuari el missatge
        "Té tobogan", si en té, i "No té tobogan", si no en té.
+    
      - Quan vulgueu modificar si té o no velomar, li heu de demanar a l'usuari que
        introdueixi 1 si té i 0 si no té. En cas de no introduir cap dels dos valors 
        se li mostrarà un missatge avisant-lo de què el valor introduït no és correcte i
        se li tornarà a demanar el valor.
+    
      - Per modificar l'estat de lloguer del velomar, heu de fer servir el
        mètode modificarEstatLloguer() d'aquesta mateixa classe.
+    
      - Tingueu en compte que el codi no es pot modificar.
      Retorn: cap
      */
-    public void modificarVelomar() {
+    public void modificarVelomar(Velomar nouVelomar) {
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Tu código actual es: " + codi + " para modificarlo "
+                + "escriba el nuevo código a continuación: ");
+        this.codi = in.nextInt();
+        
+        System.out.println("Tu fecha actual es: " + dataAlta + "para modificarlo"
+                + "escriba la nueva fecha a continuación:");
+        this.dataAlta = in.nextLine();
+        
+        //controlar si el objecto actual tiene tobogan o no
+        if((String.valueOf(tobogan) == "1")){
+            System.out.println("Té tobogan");
+        }else{
+            System.out.println("No té tobogan");
+        }
+        
+        //controlar que el objeto actual esta alquilado o no
+        do{
+            System.out.println("El valor introducido no es correcto.");
+            System.out.println("Vuelve a introducir un valor (0 o 1) ");
+            
+        }while((String.valueOf(llogat) == "") || (String.valueOf(llogat) != "0") || (String.valueOf(llogat) != "1"));
        
     }
 
