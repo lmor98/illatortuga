@@ -7,7 +7,8 @@ import java.util.Scanner;
  */
 public class Hamaca {
 
-    private static int codi = 0;
+    private int codi;
+    private static int properCodi=0;
     private String dataAlta;
     private boolean llogat;
 
