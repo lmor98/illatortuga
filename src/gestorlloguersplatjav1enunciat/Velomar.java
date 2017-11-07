@@ -7,7 +7,8 @@ import java.util.Scanner;
  */
 public class Velomar {
 
-    private static int codi = 0;
+    private int codi;
+    private static int properCodi=0;
     private String dataAlta;
     private boolean tobogan;
     private boolean llogat;
