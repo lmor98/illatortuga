@@ -1,4 +1,4 @@
-
+package gestorlloguersplatjav1enunciat;
 import java.util.Scanner;
 
 /**
@@ -22,16 +22,33 @@ public class Hamaca {
      - Heu de tenir en compte que quan es crea una ombrella, l'atribut llogat 
        sempre és fals.
      */
-    public Hamaca() {
-
+    public Hamaca(String nouDataAlta) {
+        codi++;
+        dataAlta = nouDataAlta;
+        llogat = false;
+        
     }
 
     /*
      Mètodes accessors. No poden ser estàtics. Penseu com serà setCodi().    
      */
+    public void setCodi(int nouCodi){
+        codi = nouCodi;
+    }
+    public int getCodi(){
+        return codi;
+    }
     
-
-    /*
+   
+    //metodo para añadir la fecha de alta a un velomar
+    public void setDataAlta(String nouDataAlta){
+        dataAlta = nouDataAlta;
+    }
+     public String getDataAlta(){
+        return dataAlta;
+    }
+     
+     /*
      Paràmetres: cap
      Accions:
      - Demanar a l'usuari les dades per consola per crear una nova hamaca. Les dades
@@ -39,7 +56,17 @@ public class Hamaca {
      Retorn: La nova hamaca creada.
      */
     public static Hamaca novaHamaca() {
+         Scanner in = new Scanner(System.in);
+         
+        System.out.println("Introduce un código numérico: ");
+        int codi = in.nextInt();
         
+        System.out.println("Introduce una fecha de alta: ");
+        String dataAlta = in.nextLine();
+        
+       Hamaca novaHamaca = new Hamaca(dataAlta);
+        
+        return novaHamaca ;
     }
 
     /*
@@ -55,7 +82,17 @@ public class Hamaca {
      Retorn: cap
      */
     public void modificarHamaca() {
-       
+       Scanner in = new Scanner(System.in);
+        
+        
+        System.out.println("El codigo actual es "+codi+", para modificarlo escribelo a continuació: ");
+         this.codi = in.nextInt();
+        
+        System.out.println("La fecha de alta es  "+dataAlta+", para modificarlo escribelo a continuació: ");
+        this.dataAlta = in.nextLine();
+         
+        
+        
     }
 
     public void mostrarHamaca() {
