@@ -16,21 +16,74 @@ public class Zona {
 
     /*
      CONSTRUCTOR
-     Paràmetres: valors per tots els atributs de la classe menys els vectors
+     Parāmetres: valors per tots els atributs de la classe menys els vectors
      Accions:
-     - Assignar als atributs els valors passats com a paràmetres
+     - Assignar als atributs els valors passats com a parāmetres
      - L'atribut lloguers s'ha d'inicialtizar buit i amb una capacitat per 300 lloguers.
      - L'atribut velomars s'ha d'inicialtizar buit i amb una capacitat per 5 velomars.
      - L'atribut ombrelles s'ha d'inicialtizar buit i amb una capacitat per 20 ombrel.les.
      - L'atribut encarregats s'ha d'inicialtizar buit i amb una capacitat per 3 encarregats.
      */
-    public Zona() {
- 
+    public Zona(String codi) {
+        this.codi = codi;
+        lloguers = new Lloguer[300];
+        velomars = new Velomar[5];
+        ombrelles = new Ombrella[20];
+        encarregats = new Encarregat[3];
     }
 
     /*
-     Mètodes accessors. No han de ser estàtics.
+     Mčtodes accessors. No han de ser estātics.
      */
+    
+    public String getCodi() {
+        return codi;
+    }
+
+    public Lloguer[] getLloguers() {
+        return lloguers;
+    }
+
+    public static int getIndexLloguers() {
+        return indexLloguers;
+    }
+
+    public Velomar[] getVelomars() {
+        return velomars;
+    }
+
+    public Ombrella[] getOmbrelles() {
+        return ombrelles;
+    }
+
+    public Encarregat[] getEncarregats() {
+        return encarregats;
+    }
+
+    
+    public void setCodi(String codi) {
+        this.codi = codi;
+    }
+
+    public void setLloguers(Lloguer[] lloguers) {
+        this.lloguers = lloguers;
+    }
+
+    public static void setIndexLloguers(int indexLloguers) {
+        Zona.indexLloguers = indexLloguers;
+    }
+
+    public void setVelomars(Velomar[] velomars) {
+        this.velomars = velomars;
+    }
+
+    public void setOmbrelles(Ombrella[] ombrelles) {
+        this.ombrelles = ombrelles;
+    }
+
+    public void setEncarregats(Encarregat[] encarregats) {
+        this.encarregats = encarregats;
+    }
     
 
     /*
@@ -40,9 +93,29 @@ public class Zona {
        a demanar són les que passem per paràmetre en el constructor.
      Retorn: La nova zona creada.
      */
+    
     public static Zona novaZona() {
-       
+         Scanner in = new Scanner(System.in);
+        
+        String codi;   
+
+        
+        System.out.println("Introdueix el nou codi de zona");
+        codi = in.nextLine();
+
+        System.out.println("Zona creat satisfactoriament");
+
+        Zona NewZona= new Zona(codi);
+
+       return NewZona; 
     }
+        
+public void afegirLloguer(Lloguer llo) {
+        lloguers[segLliureLloguer] = llo; 
+        segLliureLloguer++;
+      
+    }
+    
 
     public void mostrarZona() {
         System.out.println("\nLes dades de la zona amb codi " + codi + " són:");
@@ -101,14 +174,14 @@ public class Zona {
         int codi = dades.nextInt();
 
         int pos = -1;
-
+//crear getcodi de la clase lloguer
         for (int i = 0; i < indexLloguers; i++) {
             if (lloguers[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
         }
-
+        
         return pos;
     }
 
