@@ -1,4 +1,4 @@
-
+package gestorlloguersplatjav1enunciat;
 import java.util.Scanner;
 
 /**
@@ -9,7 +9,7 @@ public class Zona {
 
     private String codi;
     private Lloguer lloguers[];
-    private static int indexLloguers = 0;
+    private int indexLloguers = 0;
     private Velomar velomars[];
     private Ombrella ombrelles[];
     private Encarregat encarregats[];
@@ -44,7 +44,7 @@ public class Zona {
         return lloguers;
     }
 
-    public static int getIndexLloguers() {
+    public int getIndexLloguers() {
         return indexLloguers;
     }
 
@@ -69,8 +69,8 @@ public class Zona {
         this.lloguers = lloguers;
     }
 
-    public static void setIndexLloguers(int indexLloguers) {
-        Zona.indexLloguers = indexLloguers;
+    public void setIndexLloguers(int indexLloguers) {
+        this.indexLloguers = indexLloguers;
     }
 
     public void setVelomars(Velomar[] velomars) {
@@ -95,7 +95,7 @@ public class Zona {
      */
     
     public static Zona novaZona() {
-         Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         
         String codi;   
 
@@ -105,14 +105,24 @@ public class Zona {
 
         System.out.println("Zona creat satisfactoriament");
 
-        Zona NewZona= new Zona(codi);
+        Zona NewZona = new Zona(codi);
 
        return NewZona; 
     }
+    /*
+     LLOGUERS
+     */
+ /*
+     Paràmetres:lloguer
+     Accions:
+     - afegeix el lloguer passat per paràmetre a la primera posició buida del vector 
+       de lloguers de la zona actual.
+     Retorn: cap
+     */
         
-public void afegirLloguer(Lloguer llo) {
-        lloguers[segLliureLloguer] = llo; 
-        segLliureLloguer++;
+    public void afegirLloguer(Lloguer noulloguer) {
+        lloguers[indexLloguers] = noulloguer; 
+        indexLloguers++;
       
     }
     
@@ -142,20 +152,6 @@ public void afegirLloguer(Lloguer llo) {
     }
 
     /*
-     LLOGUERS
-     */
- /*
-     Paràmetres:lloguer
-     Accions:
-     - afegeix el lloguer passat per paràmetre a la primera posició buida del vector 
-       de lloguers de la zona actual.
-     Retorn: cap
-     */
-    public void afegirLloguer() {
-
-    }
-
-    /*
      Paràmetres: Lloguer
      Accions:
      - Modifica l'estat dels elements llogats a no llogats del lloguer passat per
@@ -164,8 +160,18 @@ public void afegirLloguer(Lloguer llo) {
        no existeix"
      Retorn: cap
      */
-    public void tancarLloguer() {
-       
+    public void tancarLloguer(Lloguer tancarLloguer) {
+        //un elemento alquilado lo pasamo a null
+        lloguers[tancarLloguer] = null;
+        
+        //si el aquiler no existe mostrar al usuario el siguiente error
+        for(int i = 0; i < lloguers.length; i++){
+            if(lloguers[i] == null){
+                System.out.println("El alquiler no existe");
+            }else{
+                System.out.println("El alquiler si que existe");
+            }
+        }
     }
 
     public int seleccionarLloguer() {
@@ -174,7 +180,6 @@ public void afegirLloguer(Lloguer llo) {
         int codi = dades.nextInt();
 
         int pos = -1;
-//crear getcodi de la clase lloguer
         for (int i = 0; i < indexLloguers; i++) {
             if (lloguers[i] != null && lloguers[i].getCodi() == codi) {
                 pos = i;
@@ -195,8 +200,9 @@ public void afegirLloguer(Lloguer llo) {
        velomars de la zona actual.
      Retorn: cap
      */
-    public void afegirVelomar() {
-  
+    public void afegirVelomar(Velomar nouVelomar) {
+        velomars[indexLloguers] = nouVelomar; 
+        indexLloguers++;
 
     }
 
@@ -209,8 +215,9 @@ public void afegirLloguer(Lloguer llo) {
        què és la manera de treure el velomar del vector de velomars.
      Retorn: cap
      */
-    public void treureVelomar() {
-
+    public void treureVelomar(Velomar treureVelomar) {
+        velomars[treureVelomar] = null;
+        
     }
 
     public int seleccionarVelomar(int codi) {
@@ -242,8 +249,9 @@ public void afegirLloguer(Lloguer llo) {
        d'encarregats de la zona actual.
      Retorn: cap
      */
-    public void afegirEncarregat() {
-       
+    public void afegirEncarregat(Encarregat nouEncarregat) {
+        encarregats[indexLloguers] = nouEncarregat; 
+        indexLloguers++;
     }
 
     /*
@@ -255,8 +263,8 @@ public void afegirLloguer(Lloguer llo) {
        què és la manera de treure l'encarregat del vector d'encarregats.
      Retorn: cap
      */
-    public void treureEncarregat() {
-      
+    public void treureEncarregat(Encarregat[] treureDniEncarregat) {
+        encarregats[treureDniEncarregat] = null;
     }
 
     public int seleccionarEncarregat(String dni) {
@@ -288,15 +296,16 @@ public void afegirLloguer(Lloguer llo) {
        d'ombrel.les de la zona actual.
      Retorn: cap
      */
-    public void afegirOmbrella() {
-       
+    public void afegirOmbrella(Ombrella novaOmbrella) {
+       ombrelles[indexLloguers] = novaOmbrella; 
+       indexLloguers++;
     }
 
     /*
      Paràmetres:codi de l'ombrel.la
      Accions:
-     - treu l'omrel.la del codi passat per paràmetre del vector d'ombrel.les de la zona 
-       actual.
+     - treu l'omrel.la del codi passat per paràmetre del vector d'ombrel.les de 
+        la zona actual.
      - a la posició que ocupa aquesta ombrel.la se li ha d'assignar el valor null,
        què és la manera de treure l'ombrel.la del vector d'ombrel.les.
      Retorn: cap
