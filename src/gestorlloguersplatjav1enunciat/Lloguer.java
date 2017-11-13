@@ -1,4 +1,4 @@
-
+package  gestorlloguersplatjav1enunciat;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -29,14 +29,105 @@ public class Lloguer {
        actual de codi en 1.
      - A l'atribut horaLloguer, se li ha d'assignar l'hora actual del sistema.
      */
-    public Lloguer() {
-
+    public Lloguer(String nouCodiZona, String nouDniEncarregat, int nouIdElementLloguer, String nouDniClient, LocalTime nouTempsLloguer, double nouTotalPagar, boolean nouPagat) {
+        properCodi=codi++;
+        codiZona = nouCodiZona;
+        dniEncarregat = nouDniEncarregat;
+        idElementLloguer = nouIdElementLloguer;
+        dniClient = nouDniClient;
+        tempsLloguer = nouTempsLloguer;
+        horaLloguer = LocalTime.now();
+        totalPagar = nouTotalPagar;
+        pagat = nouPagat;
+        
     }
+
+ 
 
     /*
      Mètodes accessors. No poden ser estàtics. Penseu com serà setCodi().    
      */
+    public void horaLloguer(int pHora, int minuts, int segons, int nanosegons) {
+        horaLloguer = LocalTime.of(pHora, minuts, segons, nanosegons);
+    }
+    public void setCodi(int noucodi) {
+        this.codi = noucodi;
+    }
+
+     public int getCodi() {
+        return codi;
+    }
     
+    public static void setProperCodi(int nouproperCodi) {
+        Lloguer.properCodi = nouproperCodi;
+    }
+
+     public static int getProperCodi() {
+        return properCodi;
+    }
+    public void setCodiZona(String nouCodiZona) {
+        this.codiZona = nouCodiZona;
+    }
+
+     public String getCodiZona() {
+        return codiZona;
+    }
+    
+    public void setDniEncarregat(String nouDniEncarregat) {
+        this.dniEncarregat = nouDniEncarregat;
+    }
+
+    public String getDniEncarregat() {
+        return dniEncarregat;
+    }
+    
+    public void setIdElementLloguer(int nouIdElementLloguer) {
+        this.idElementLloguer = nouIdElementLloguer;
+    }
+
+    public int getIdElementLloguer() {
+        return idElementLloguer;
+    }
+    
+    public void setDniClient(String nouDniClient) {
+        this.dniClient = nouDniClient;
+    }
+
+      public String getDniClient() {
+        return dniClient;
+    }
+    
+    public void setHoraLloguer(LocalTime nouHoraLloguer) {
+        this.horaLloguer = nouHoraLloguer;
+    }
+
+     public LocalTime getHoraLloguer() {
+        return horaLloguer;
+    }
+    
+    public void setTempsLloguer(LocalTime nouTempsLloguer) {
+        this.tempsLloguer = nouTempsLloguer;
+    }
+
+     public LocalTime getTempsLloguer() {
+        return tempsLloguer;
+    }
+    
+    public void setTotalPagar(double nouTotalPagar) {
+        this.totalPagar = nouTotalPagar;
+    }
+
+    public double getTotalPagar() {
+        return totalPagar;
+    }
+    
+    public void setPagat(boolean nouPagat) {
+        this.pagat = nouPagat;
+    }
+    
+    public boolean getPagat() {
+        return pagat;
+    } 
 
     /*
      Paràmetres: platja de la zona on es crearà un lloguer
@@ -70,7 +161,36 @@ public class Lloguer {
      Retorn: El nou lloguer creat.
      */
     public static Lloguer nouLloguer() {
+        Scanner in = new Scanner(System.in);
         
+        //introducimos los parametros para nos pidan los datos por pantalla
+        System.out.println("Introduce el codigo de la zona en la que quieres realizar el alquiler: ");
+        String nouCodiZona = in.nextLine();
+        
+        System.out.println("Introduce el DNI del encargado: ");
+        String nouDniEncarregat = in.nextLine();
+        
+        System.out.println("Introduce el id del elemento de alquiler: ");
+        int nouIdElementLloguer = in.nextInt();
+        
+        System.out.println("Introduce el DNI del cliente: ");
+        String nouDniClient = in.nextLine();
+        
+        System.out.println("Introduce el tiempo de alquiler: ");
+        LocalTime nouTempsLloguer = LocalTime.now();
+        
+        System.out.println("Introduce la hora de alquiler: ");
+        String nouHoraLloguer = in.nextLine();
+        
+        System.out.println("Introduce importe a pagar: ");
+        double nouTotalPagar = in.nextDouble();
+        
+        System.out.println("Introduce si esta pagado el aquiler :  1 si està pagado i 0 si no lo està ");
+        boolean nouPagat = in.nextBoolean();
+        
+        Lloguer nouLoguer = new Lloguer(nouCodiZona,nouDniEncarregat,nouIdElementLloguer,nouDniClient, nouTempsLloguer,nouTotalPagar,nouPagat);
+        
+        return nouLoguer;
     }
 
     public static int seleccionarElementLloguer(int posZona, Platja platja) {
