@@ -1,4 +1,4 @@
-
+package gestorlloguersplatjav1enunciat;
 import java.util.Scanner;
 
 /**
@@ -28,17 +28,58 @@ public class Ombrella {
        sempre és fals.
      */
          
-    public Ombrella(int codi, String dataAlta, Hamaca[] hamaques, boolean llogat) {
-        this.codi = codi;
-        this.dataAlta = dataAlta;
-        this.hamaques = hamaques;
-        this.llogat = llogat;
+    public Ombrella(String noudataAlta) {
+        codi = codi + 1;
+        properCodi = codi + 1;
+        dataAlta = noudataAlta;
+        hamaques = null;
+        llogat = false;
     }
-    
 
     /*
      Mètodes accessors. No poden ser estàtics. Penseu com serà setCodi().    
      */
+    
+    public void setCodi(int nouCodi) {
+        codi = nouCodi;
+    }
+
+    public static void setProperCodi(int nouproperCodi) {
+        Ombrella.properCodi = nouproperCodi;
+    }
+
+    public void setDataAlta(String noudataAlta) {
+        dataAlta = noudataAlta;
+    }
+
+    public void setHamaques(Hamaca[] nouhamaques) {
+        hamaques = nouhamaques;
+    }
+
+    public void setLlogat(boolean noullogat) {
+        llogat = noullogat;
+    }
+    
+    public int getCodi() {
+        return codi;
+    }
+
+    public static int getProperCodi() {
+        return properCodi;
+    }
+
+    public String getDataAlta() {
+        return dataAlta;
+    }
+
+    public Hamaca[] getHamaques() {
+        return hamaques;
+    }
+
+    public boolean isLlogat() {
+        return llogat;
+    }
+    
     
     /*
      Paràmetres: cap
@@ -48,7 +89,18 @@ public class Ombrella {
      Retorn: La nova ombrel.la creada.
      */
     public static Ombrella novaOmbrella() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introdueix el nou codi:");
+        int codi = in.nextInt();
+        System.out.println("Introdueix la nova data d'alta: ");
+        String dataAlta = in.nextLine();
+        System.out.println("Introdueix la nova hamaca");
+        String hamaques = in.nextLine();
+        System.out.println("Introduce si esta llogat o no");
+        boolean llogat = in.nextBoolean();
         
+       Ombrella novaOmbrella = new Ombrella(dataAlta);
+        return novaOmbrella;
     }
 
     /*
@@ -65,6 +117,13 @@ public class Ombrella {
      Retorn: cap
      */
     public void modificarOmbrella() {
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Tu fecha actual es: " + dataAlta + "para modificarlo"
+                + "escriba la nueva fecha a continuación");
+        this.dataAlta = in.nextLine();
+        
+        //para modificar una ombrel·la
        
     }
 
@@ -95,8 +154,21 @@ public class Ombrella {
        de lloguer.
      Retorn: cap
      */
-    public void afegirHamaca() {
+    public void afegirHamaca(Hamaca[] nouhamaques) {
+        this.hamaques = nouhamaques;
         
+        //añadir nouhamaques en la posicion que haya null
+        for(int i = 0; i <hamaques.length; i++){
+            if(hamaques[i] == null){
+                this.hamaques = nouhamaques;
+            }else{
+                System.out.println("Estas intentando añadir una hamaca cuando"
+                        + " ya esta alquilado");
+            }
+        }
+        
+        //modificar el estado de lloguer a true
+        this.llogat = true;
     }
 
     /*
@@ -113,7 +185,21 @@ public class Ombrella {
        modificar el seu estat de lloguer.
      Retorneu: cap
      */
-    public void treureHamaca() {
+    public void treureHamaca(Hamaca[] nouhamaques) {
+        nouhamaques = null;
+        
+        //recorrer el vector hamaques y comprobar si esta
+        //en caso de no estar avisar al usuario
+        for(int i = 0; i < hamaques.length; i++){
+            if(hamaques[i] == null){
+                System.out.println("La hamaca no esta en el listado");
+            }else{
+                System.out.println("La hamaca esta en el listado");
+            }
+        }
+         
+         //cambiar el estado del lloguer a false
+         this.llogat = false;
         
     }
 
