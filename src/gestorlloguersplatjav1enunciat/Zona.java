@@ -176,7 +176,7 @@ public void afegirLloguer(Lloguer llo) {
         int pos = -1;
 //crear getcodi de la clase lloguer
         for (int i = 0; i < indexLloguers; i++) {
-            if (lloguers[i].getCodi() == codi) {
+            if (lloguers[i] != null && lloguers[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
@@ -223,7 +223,7 @@ public void afegirLloguer(Lloguer llo) {
         }
 
         for (int i = 0; i < velomars.length; i++) {
-            if (velomars[i].getCodi() == codi) {
+            if (velomars[i] != null && velomars[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
@@ -269,7 +269,7 @@ public void afegirLloguer(Lloguer llo) {
         }
 
         for (int i = 0; i < encarregats.length; i++) {
-            if (encarregats[i].getDni().equals(dni)) {
+            if (encarregats[i] != null && encarregats[i].getDni().equals(dni)) {
                 pos = i;
                 return pos;
             }
@@ -315,7 +315,7 @@ public void afegirLloguer(Lloguer llo) {
         }
 
         for (int i = 0; i < ombrelles.length; i++) {
-            if (ombrelles[i].getCodi() == codi) {
+            if (ombrelles[i] != null && ombrelles[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
