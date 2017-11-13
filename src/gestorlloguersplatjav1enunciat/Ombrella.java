@@ -7,6 +7,8 @@ import java.util.Scanner;
  */
 public class Ombrella {
 
+   
+
     private int codi;
     private static int properCodi=0;
     private String dataAlta;
@@ -25,9 +27,14 @@ public class Ombrella {
      - Heu de tenir en compte que quan es crea una ombrella, l'atribut llogat 
        sempre és fals.
      */
-    public Ombrella() {
-  
+         
+    public Ombrella(int codi, String dataAlta, Hamaca[] hamaques, boolean llogat) {
+        this.codi = codi;
+        this.dataAlta = dataAlta;
+        this.hamaques = hamaques;
+        this.llogat = llogat;
     }
+    
 
     /*
      Mètodes accessors. No poden ser estàtics. Penseu com serà setCodi().    
