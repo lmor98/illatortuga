@@ -1,4 +1,4 @@
-
+package gestorlloguersplatjav1enunciat;
 import java.util.Scanner;
 
 /**
@@ -11,13 +11,14 @@ public class Platja {
     private String nom;
     private Velomar velomars[];
     private Ombrella ombrelles[];
-    private static Hamaca hamaques[];
+    private Hamaca hamaques[];
     private Encarregat encarregats[];
-    private static Zona zones[];
+    private Zona zones[];
 
     /*
      CONSTRUCTOR
-     Paràmetres: valors per tots els atributs de la classe menys els vectors
+     Paràmetres: valors per tots els atributs de la classe menys els
+    vectors
      Accions:
      - Assignar als atributs els valors passats com a paràmetres     
      - L'atribut velomars s'ha d'inicialtizar buit i amb una capacitat per 50 velomars.
@@ -26,13 +27,71 @@ public class Platja {
      - L'atribut hamaques s'ha d'inicialtizar buit i amb una capacitat per 800 hamaques.
      - L'atribut zones s'ha d'inicialtizar buit i amb una capacitat per 10 zones.
      */
-    public Platja() {
- 
+    public Platja(String novesCoordenades, String nouNom) {
+        this.coordenades = novesCoordenades;
+        this.nom = nouNom;
     }
+
 
     /*
      Mètodes accessors.
      */
+
+    public void setCoordenades(String novesCoordenades) {
+        this.coordenades = novesCoordenades;
+    }
+
+    public void setNom(String nouNom) {
+        this.nom = nouNom;
+    }
+
+    public void setVelomars(Velomar[] velomars) {
+        this.velomars = velomars;
+    }
+
+    public void setOmbrelles(Ombrella[] ombrelles) {
+        this.ombrelles = ombrelles;
+    }
+
+    public void setHamaques(Hamaca[] hamaques) {
+        this.hamaques = hamaques;
+    }
+
+    public void setEncarregats(Encarregat[] encarregats) {
+        this.encarregats = encarregats;
+    }
+
+    public void setZones(Zona[] zones) {
+        this.zones = zones;
+    }
+    
+    public String getCoordenades() {
+        return coordenades;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Velomar[] getVelomars() {
+        return velomars;
+    }
+
+    public Ombrella[] getOmbrelles() {
+        return ombrelles;
+    }
+
+    public Hamaca[] getHamaques() {
+        return hamaques;
+    }
+
+    public Encarregat[] getEncarregats() {
+        return encarregats;
+    }
+
+    public Zona[] getZones() {
+        return zones;
+    }
     
 
     /*
@@ -44,22 +103,41 @@ public class Platja {
      Retorn: La nova platja creada.
      */
     public static Platja novaPlatja() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce unas nuevas coordenadas:");
+        String coordenades = in.nextLine();
         
+        System.out.println("Introduce un nuevo nombre para la playa:");
+        String nom = in.nextLine();
+        
+        Platja newPlatja = new Platja(coordenades, nom);
+        return newPlatja;
     }
 
     /*
      Paràmetres: cap
      Accions:
-     - Demanar a l'usuari que introdueixi les noves dades de l'objecte actual
-       i modificar els atributs corresponents d'aquest objecte.
-     - Les coordenades seran l'índex de la platja, per tant no es poden modificar.
-     - Li heu de mostrar a l'usuari el valor actual dels atributs de l'objecte
-       actual, abans de modificar-los.
-     - Aquest mètode no modificarà els vectors dels diferents elements de la platja.
+     - Demanar a l'usuari que introdueixi les noves dades 
+        de l'objecte actual i modificar els atributs 
+        corresponents d'aquest objecte.
+     - Les coordenades seran l'índex de la platja, per tant 
+        no es poden modificar.
+     - Li heu de mostrar a l'usuari el valor actual dels 
+        atributs de l'objecte actual, abans de modificar-los.
+     - Aquest mètode no modificarà els vectors dels 
+        diferents elements de la platja.
      Retorn: cap
      */
     public void modificarPlatja() {
+        Scanner in = new Scanner(System.in);
         
+        System.out.println("Tus coordenadas son las siguientes:" + coordenades +
+        " para modificar tus coordenadas escriba a continuación:");
+        String coordenades = in.nextLine();
+        
+        System.out.println("El nombre de la playa actual es: " + nom +
+        " para modificar el nombre escriba a continuación:");
+        String nom = in.nextLine();
     }
 
     public void mostrarPlatja() {
@@ -128,7 +206,7 @@ public class Platja {
         int codi = dades.nextInt();
         int pos = -1;
         for (int i = 0; i < velomars.length; i++) {
-            if (velomars[i].getCodi() == codi) {
+            if (velomars[i] != null && velomars[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
@@ -173,7 +251,7 @@ public class Platja {
         int codi = dades.nextInt();
         int pos = -1;
         for (int i = 0; i < ombrelles.length; i++) {
-            if (ombrelles[i].getCodi() == codi) {
+            if (ombrelles[i] != null && ombrelles[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
